@@ -78,7 +78,7 @@ Aşağıda uygulamanın farklı aşamalarından ekran görüntüleri bulunmaktad
 
 Uygulamanın başlangıç arayüzü ve kullanıcıların MR görüntülerini yükleyebileceği bölüm.
 
-![Ekran görüntüsü 2025-05-16 124628](https://github.com/user-attachments/assets/f944a0d2-e710-46be-9139-8cf66b041dbf)
+![image](https://github.com/user-attachments/assets/f4d76dfc-5b12-4d7b-8cc1-c5d32054195a)
 
 #### Analiz Sonuçları ve Tümör Bilgisi
 
