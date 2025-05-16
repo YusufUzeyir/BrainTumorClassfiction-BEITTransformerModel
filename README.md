@@ -69,3 +69,27 @@ Model, `ModelTrain.ipynb` dosyasında detaylandırılan eğitim süreciyle belir
 *Not: Yukarıdaki değerler, `ModelTrain.ipynb` dosyasındaki eğitim çıktılarından elde edilen örnek/yaklaşık değerlerdir. Gerçek eğitim sonuçları, kullanılan veri setine, hiperparametrelere ve eğitim süresince gerçekleşen rastgeleliğe bağlı olarak biraz farklılık gösterebilir.*
 
 Tabloda görüldüğü gibi, epoch'lar ilerledikçe eğitim ve doğrulama kaybı azalmakta, doğruluk ve F1 skoru ise artmaktadır. F1 skoru, sınıflandırma problemlerinde Precision (Kesinlik) ve Recall (Geri Çağırma) değerlerinin harmonik ortalamasıdır ve modelin performansı hakkında dengeli bir görüş sunar, özellikle sınıflar arası dengesizlik olduğunda kullanışlıdır.
+
+### Ekran Görüntüleri
+
+Aşağıda uygulamanın farklı aşamalarından ekran görüntüleri bulunmaktadır:
+
+#### Ana Sayfa ve Görüntü Yükleme Alanı
+
+Uygulamanın başlangıç arayüzü ve kullanıcıların MR görüntülerini yükleyebileceği bölüm.
+
+![Ekran görüntüsü 2025-05-16 124628](https://github.com/user-attachments/assets/f944a0d2-e710-46be-9139-8cf66b041dbf)
+
+#### Analiz Sonuçları ve Tümör Bilgisi
+
+Yüklenen görüntünün analiz edilmesi sonucunda elde edilen tümör sınıflandırması, güven skoru, olasılık dağılımları ve tümör hakkında detaylı bilgi.
+
+![Ekran görüntüsü 2025-05-16 124908](https://github.com/user-attachments/assets/0227e363-59e3-4029-9c87-598643f5ae7b)
+
+#### Backend Terminal Çıktısı (Görüntü Doğrulama ve Sınıflandırma)
+
+Backend'in Gemini API ile görüntüyü doğrulama ve model ile sınıflandırma adımlarındaki terminal çıktıları.
+
+![Ekran görüntüsü 2025-05-16 124946](https://github.com/user-attachments/assets/2c10bdf6-ec28-4d3a-9460-85410f7946b9)
+
+
