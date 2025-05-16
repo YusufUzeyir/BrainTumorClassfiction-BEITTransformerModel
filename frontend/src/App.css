@@ -1,0 +1,650 @@
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #0a0f2e; /* Koyu Lacivert/Mor Ana Arka Plan */
+  --bg-secondary: #1a2049; /* Biraz daha açık ton */
+  --bg-glass: rgba(26, 32, 73, 0.6); /* Glassmorphism için */
+  --text-primary: #e0e0ff; /* Açık Lavanta/Beyaz */
+  --text-secondary: #a0a8d0; /* Biraz daha soluk */
+  --accent-primary: #00f5c9; /* Canlı Turkuaz Vurgu */
+  --accent-secondary: #4a90e2; /* Bilimsel Mavi */
+  --border-color: rgba(0, 245, 201, 0.2);
+  --shadow-color: rgba(0, 245, 201, 0.1);
+  --font-main: 'Poppins', sans-serif;
+  --border-radius: 12px;
+  --transition-speed: 0.4s;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Yatay kaydırmayı önle */
+}
+
+/* Ana Kapsayıcı ve Arka Plan Efektleri */
+.app-container {
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden; /* İçerideki animasyonlar için */
+  background: radial-gradient(circle at top left, rgba(74, 144, 226, 0.1), transparent 40%),
+              radial-gradient(circle at bottom right, rgba(0, 245, 201, 0.08), transparent 50%);
+}
+
+/* Başlık Alanı */
+.app-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: fadeInDown 1s ease-out;
+}
+
+.app-header h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+
+.app-header .brain-icon {
+  font-size: 2.5rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  display: inline-block;
+  animation: subtlePulse 3s infinite ease-in-out;
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Ana İçerik Alanı (Grid) */
+.main-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2.5rem;
+  align-items: start; /* Farklı yükseklikteki kartları hizala */
+}
+
+/* Genel Kart Stili */
+.styled-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  animation: fadeInUp 0.8s ease-out;
+  min-height: 400px; /* Minimum yükseklik */
+  display: flex;
+  flex-direction: column;
+}
+
+.styled-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px 0 rgba(0, 245, 201, 0.15);
+}
+
+.card-header-custom {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-header-custom .icon {
+  font-size: 1.8rem;
+  color: var(--accent-primary);
+}
+
+.card-header-custom h4 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+/* Yükleme Bölümü */
+.upload-section {
+  /* styled-card'dan miras alır */
+}
+
+.form-label-custom {
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.file-input-wrapper {
+  position: relative;
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+  margin-bottom: 1.5rem;
+}
+
+.file-input-wrapper:hover {
+  border-color: var(--accent-primary);
+  background-color: rgba(0, 245, 201, 0.05);
+}
+
+.file-input-wrapper input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-input-icon {
+  font-size: 3rem;
+  color: var(--accent-primary);
+  margin-bottom: 1rem;
+}
+
+.file-input-text {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.file-input-hint {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* Görüntü Önizleme */
+.preview-area {
+  margin-top: 1.5rem;
+  text-align: center;
+  flex-grow: 1; /* Alanı doldurmasını sağla */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 150px; /* Önizleme alanı için minimum yükseklik */
+}
+
+.preview-image-container {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  background-color: rgba(0,0,0,0.2); /* Resim yokken yer tutucu */
+}
+
+.preview-image {
+  display: block;
+  max-width: 100%;
+  max-height: 250px; /* Yüksekliği sınırla */
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+/* Analiz Butonu */
+.analyze-button {
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  color: var(--bg-primary);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  margin-top: auto; /* Kartın altına iter */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.analyze-button:hover:not(:disabled) {
+  transform: scale(1.03);
+  box-shadow: 0 5px 20px rgba(0, 245, 201, 0.3);
+}
+
+.analyze-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.analyze-button .spinner-border {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Sonuçlar Bölümü */
+.results-section {
+ /* styled-card'dan miras alır */
+}
+
+.results-placeholder, .results-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-secondary);
+  flex-grow: 1;
+  min-height: 300px; /* Yükseklik vermek */
+}
+
+.results-placeholder .icon, .results-loading .icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--accent-primary);
+}
+
+.results-loading .spinner-border {
+  width: 3rem;
+  height: 3rem;
+  color: var(--accent-primary);
+}
+
+.result-display {
+  animation: fadeInUp 0.6s ease-out;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tahmin Kartı */
+.prediction-highlight {
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  transition: background-color var(--transition-speed) ease;
+}
+
+.prediction-highlight.glioma { background-color: rgba(231, 76, 60, 0.2); border-color: rgba(231, 76, 60, 0.5); }
+.prediction-highlight.meningioma { background-color: rgba(52, 152, 219, 0.2); border-color: rgba(52, 152, 219, 0.5); }
+.prediction-highlight.notumor { background-color: rgba(46, 204, 113, 0.2); border-color: rgba(46, 204, 113, 0.5); }
+.prediction-highlight.pituitary { background-color: rgba(155, 89, 182, 0.2); border-color: rgba(155, 89, 182, 0.5); }
+
+.prediction-class {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.prediction-confidence {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.confidence-bar-container {
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0.8rem;
+}
+
+.confidence-bar-inner {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-secondary), var(--accent-primary));
+  border-radius: 4px;
+  transition: width 1s ease-out;
+}
+
+/* --- YENİ GRAFİK ALANI STİLLERİ --- */
+.chart-area-container {
+  display: flex;
+  gap: 1.5rem; /* Grafikler arası boşluk */
+  margin-top: 2rem; /* Üstteki elemanla boşluk */
+  flex-wrap: wrap; /* Küçük ekranlarda alt satıra geç */
+  justify-content: space-around; /* Mümkünse eşit dağıt */
+  flex-grow: 1; /* Kalan alanı doldur */
+}
+
+.chart-container {
+  flex: 1; /* Esnek genişlik, eşit yer kapla */
+  min-width: 250px; /* Minimum genişlik */
+  height: 300px; /* Sabit yükseklik */
+  position: relative; /* Chart.js için */
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  /* background: rgba(255, 255, 255, 0.05); Arka planı kaldırabiliriz */
+  display: flex; /* İçeriği (başlık ve canvas) yönetmek için */
+  flex-direction: column; /* Başlık üste, grafik alta */
+}
+
+.chart-container h5 { /* Grafik başlıkları */
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 1rem;
+}
+/* --- YENİ GRAFİK ALANI STİLLERİ SONU --- */
+
+
+/* Detaylı Sonuçlar Listesi (İsteğe bağlı, şu an JS'de yorumlu) */
+.detailed-predictions h5 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  text-align: center;
+  margin-top: 2rem; /* Grafiklerden sonra boşluk */
+}
+
+.predictions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 150px; /* Liste çok uzarsa kaydırma eklenebilir */
+  overflow-y: auto;
+}
+
+.predictions-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.predictions-list-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.prediction-item-class {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.prediction-item-prob {
+  color: var(--accent-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.prediction-item-prob.low {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+
+/* Tümör Bilgi Bölümü */
+.tumor-info-section {
+  margin-top: 2.5rem;
+  animation: fadeInUp 1s ease-out;
+  /* Grid yapısındayken tam genişlik kaplaması için */
+  grid-column: 1 / -1; /* Eğer main-content hala grid ise */
+}
+
+.tumor-info-card {
+  padding: 0;
+  border-color: var(--border-color);
+}
+.tumor-info-card.glioma { border-color: rgba(231, 76, 60, 0.5); }
+.tumor-info-card.meningioma { border-color: rgba(52, 152, 219, 0.5); }
+.tumor-info-card.notumor { border-color: rgba(46, 204, 113, 0.5); } /* Gerçi bu gösterilmeyecek */
+.tumor-info-card.pituitary { border-color: rgba(155, 89, 182, 0.5); }
+
+.tumor-info-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  background: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tumor-info-header .icon {
+  font-size: 2rem;
+  color: var(--accent-primary);
+}
+.tumor-info-card.glioma .tumor-info-header .icon { color: #e74c3c; }
+.tumor-info-card.meningioma .tumor-info-header .icon { color: #3498db; }
+.tumor-info-card.pituitary .tumor-info-header .icon { color: #9b59b6; }
+
+.tumor-info-header h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.tumor-info-body {
+  padding: 2rem;
+}
+
+.tumor-description {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+/* Accordion Stilleri */
+.styled-accordion .accordion-item {
+  background-color: transparent;
+  border: none;
+  margin-bottom: 1rem;
+}
+
+.styled-accordion .accordion-header { }
+
+.styled-accordion .accordion-button {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-weight: 500;
+  border-radius: 8px !important;
+  border: 1px solid var(--border-color);
+  transition: background-color var(--transition-speed) ease;
+  box-shadow: none;
+  padding: 1rem 1.5rem;
+}
+
+.styled-accordion .accordion-button:not(.collapsed) {
+  background-color: var(--accent-primary);
+  color: var(--bg-primary);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 15px rgba(0, 245, 201, 0.2);
+}
+
+.styled-accordion .accordion-button:focus {
+  box-shadow: none;
+  border-color: var(--accent-primary);
+}
+
+.styled-accordion .accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23a0a8d0'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  transition: transform var(--transition-speed) ease;
+}
+
+.styled-accordion .accordion-button:not(.collapsed)::after {
+   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230a0f2e'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+   transform: rotate(-180deg);
+}
+
+.styled-accordion .accordion-body {
+  padding: 1.5rem;
+  background: rgba(10, 15, 46, 0.5);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  margin-top: -1px;
+  border: 1px solid var(--border-color);
+  border-top: none;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 0.6rem 0;
+  color: var(--text-secondary);
+  border-bottom: 1px solid rgba(0, 245, 201, 0.1);
+}
+.info-list li:last-child {
+  border-bottom: none;
+}
+
+.info-list .list-icon {
+  font-size: 1.1rem;
+  margin-top: 0.2rem; /* Hizalama için */
+}
+
+.info-list .symptom-icon { color: var(--accent-secondary); }
+.info-list .treatment-icon { color: var(--accent-primary); }
+
+/* Uyarı ve Feragatname */
+.disclaimer-alert {
+  background-color: rgba(74, 144, 226, 0.1);
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.disclaimer-alert strong {
+  color: var(--text-primary);
+}
+
+/* Hata Mesajı */
+.error-alert {
+  background-color: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.4); /* Kenarlık rengi biraz daha belirgin */
+  color: #ff8a80;
+  border-radius: var(--border-radius); /* Diğer kartlarla uyumlu */
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem; /* Altındaki elemanla boşluk */
+  font-size: 0.95rem; /* Biraz daha büyük */
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.app-footer .version-badge {
+  background-color: var(--bg-secondary);
+  color: var(--accent-primary);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-left: 0.5rem; /* Önceki yazıdan ayırmak için */
+}
+
+/* Animasyonlar */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Responsive Tasarım */
+@media (max-width: 992px) {
+  .main-content {
+    grid-template-columns: 1fr; /* Tek sütuna düşür */
+  }
+  .app-header h1 {
+    font-size: 2.5rem;
+  }
+  .chart-area-container {
+     gap: 1rem; /* Daha küçük ekranlarda boşluğu azalt */
+  }
+  .chart-container {
+      height: 280px; /* Grafikler için yüksekliği biraz azalt */
+  }
+}
+
+@media (max-width: 576px) {
+  .app-container {
+    padding: 2rem 1rem;
+  }
+  .styled-card {
+    padding: 1.5rem;
+  }
+  .app-header h1 {
+    font-size: 2rem;
+  }
+  .app-header p {
+    font-size: 1rem;
+  }
+  .analyze-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  .prediction-class {
+    font-size: 1.5rem;
+  }
+  .tumor-info-header h4 {
+    font-size: 1.3rem;
+  }
+  .chart-area-container {
+      flex-direction: column; /* Çok küçük ekranlarda grafikleri alt alta diz */
+      gap: 1.5rem;
+  }
+   .chart-container {
+      min-width: unset; /* Minimum genişliği kaldır */
+      width: 100%; /* Tam genişlik kapla */
+      height: 250px; /* Yüksekliği daha da azalt */
+  }
+  .tumor-info-body {
+     padding: 1.5rem;
+  }
+  .tumor-info-header {
+     padding: 1rem 1.5rem;
+  }
+}
