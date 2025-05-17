@@ -48,10 +48,6 @@ Uygulama arayüzünde "MR Görüntüsü Yükle" alanına beyin MR görüntünüz
 
 ### Model Eğitimi
 
-Model eğitimi için `backend/ModelTrain.ipynb` Jupyter Notebook dosyasını kullanabilirsiniz. Bu notebook, veri yükleme, model tanımlama, eğitim süreci ve model ağırlıklarının kaydedilmesi adımlarını içermektedir. Eğitim için uygun bir beyin tümörü veri setine ihtiyacınız olacaktır.
-
-### Model Eğitimi
-
 Model eğitimi için `backend/ModelTrain.ipynb` Jupyter Notebook dosyasını kullanabilirsiniz. Model, başlıca [Kaggle'da bulunan bu veri seti](https://www.kaggle.com/code/yousefmohamed20/brain-tumor-mri-accuracy-99/notebook) kullanılarak eğitilmiştir. Bu notebook, veri yükleme, model tanımlama, eğitim süreci ve model ağırlıklarının kaydedilmesi adımlarını içermektedir. Eğitim için uygun bir beyin tümörü veri setine ihtiyacınız olacaktır.
 
 ### Model Eğitimi Sonuçları
